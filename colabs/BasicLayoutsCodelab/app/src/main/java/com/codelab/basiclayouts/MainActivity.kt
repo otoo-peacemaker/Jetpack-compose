@@ -24,6 +24,7 @@ import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.codelab.basiclayouts.ui.theme.MySootheTheme
 import com.codelab.basiclayouts.ui.views.composables.HomeScreen
 import com.codelab.basiclayouts.ui.views.composables.SootheBottomNavigation
 
@@ -38,9 +39,12 @@ class MainActivity : ComponentActivity() {
 // Step: MySoothe App - Scaffold
 @Composable
 fun MySootheApp() {
-    // Implement composable here
-    Scaffold(bottomBar = { SootheBottomNavigation() }) { paddingValues ->
-        HomeScreen(Modifier.padding(paddingValues))
+    MySootheTheme {
+        Scaffold(
+            bottomBar = { SootheBottomNavigation() }
+        ) { padding ->
+            HomeScreen(Modifier.padding(padding))
+        }
     }
 }
 
