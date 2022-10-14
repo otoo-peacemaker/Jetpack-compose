@@ -19,8 +19,13 @@ package com.codelab.basiclayouts
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.codelab.basiclayouts.ui.views.composables.HomeScreen
+import com.codelab.basiclayouts.ui.views.composables.SootheBottomNavigation
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,10 +39,13 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun MySootheApp() {
     // Implement composable here
+    Scaffold(bottomBar = { SootheBottomNavigation() }) { paddingValues ->
+        HomeScreen(Modifier.padding(paddingValues))
+    }
 }
 
 
-@Preview(widthDp = 360, heightDp = 640, showSystemUi = true)
+@Preview(showBackground = true, widthDp = 360, heightDp = 640, showSystemUi = false)
 @Composable
 fun MySoothePreview() {
     MySootheApp()
