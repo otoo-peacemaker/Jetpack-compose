@@ -1,4 +1,4 @@
-package com.codelab.basiclayouts.composables
+package com.codelab.basiclayouts.ui.views.composables
 
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes

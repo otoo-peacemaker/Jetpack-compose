@@ -1,4 +1,4 @@
-package com.codelab.basiclayouts.composables
+package com.codelab.basiclayouts.ui.views.composables
 
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
