@@ -6,6 +6,8 @@ import androidx.activity.compose.setContent
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.tooling.preview.Preview
+import com.peacecodetech.basicscodelab.composables.Greetings
+import com.peacecodetech.basicscodelab.composables.OnBoardingScreen
 import com.peacecodetech.basicscodelab.ui.theme.BasicsCodelabTheme
 
 class MainActivity : ComponentActivity() {
@@ -36,6 +38,7 @@ private fun MyApp() {//HOISTING ONLY THE ON BOARDING IN MYAPP
 }
 
 
+//preview the dark theme
 @Preview(
     showBackground = true,
     widthDp = 320,

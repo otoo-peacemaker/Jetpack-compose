@@ -1,4 +1,4 @@
-package com.peacecodetech.basicscodelab
+package com.peacecodetech.basicscodelab.composables
 
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
