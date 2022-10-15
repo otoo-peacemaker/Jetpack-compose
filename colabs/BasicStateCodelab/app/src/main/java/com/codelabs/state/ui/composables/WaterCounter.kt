@@ -52,3 +52,12 @@ fun StatelessCounter(count: Int, onIncrement: () -> Unit, modifier: Modifier = M
         }
     }
 }
+
+@Composable
+fun WaterCounter(modifier: Modifier = Modifier) {
+    val count = 0
+    Text(
+        text = "You've had $count glasses.",
+        modifier = modifier.padding(16.dp)
+    )
+}
