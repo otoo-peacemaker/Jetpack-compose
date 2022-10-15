@@ -4,7 +4,7 @@ Jetpack [Compose](https://developer.android.com/jetpack/compose) is Android’s 
 - Quickly bring your app to life with less code, powerful tools, and intuitive Kotlin APIs.
 - It requires less code to implement a UI compared to the Android View system, which makes your app easier to maintain.
 
-## IMPORTANT NOTES TO COMPOSE UI
+## Note Taking 👨‍⚖️COMPOSE UI
 
 ###  Creating a performant lazy list
 - To display a scrollable column we use a LazyColumn. LazyColumn renders only the visible items on screen, allowing performance gains when rendering a big list.
@@ -19,3 +19,5 @@ Jetpack [Compose](https://developer.android.com/jetpack/compose) is Android’s 
 - The **remember** function works only as long as the composable is kept in the Composition. When you rotate, the whole activity is restarted so all state is lost. 
 - This also happens with any configuration change and on process death.
 - Instead of using **remember** you can use **rememberSaveable**. This will save each state surviving configuration changes (such as rotations) and process death.
+
+## Sample projects
