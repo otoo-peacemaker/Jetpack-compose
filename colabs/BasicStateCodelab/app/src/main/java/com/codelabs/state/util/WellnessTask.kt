@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.codelabs.state
+package com.codelabs.state.util
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf

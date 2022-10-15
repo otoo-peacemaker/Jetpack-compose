@@ -13,10 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.codelabs.state
+package com.codelabs.state.viewmodel
 
 import androidx.compose.runtime.toMutableStateList
 import androidx.lifecycle.ViewModel
+import com.codelabs.state.util.WellnessTask
 
 class WellnessViewModel : ViewModel() {
     /**

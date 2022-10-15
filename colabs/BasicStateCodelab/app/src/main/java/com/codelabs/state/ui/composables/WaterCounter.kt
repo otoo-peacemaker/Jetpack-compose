@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.codelabs.state
+package com.codelabs.state.ui.composables
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding

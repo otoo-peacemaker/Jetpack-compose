@@ -21,7 +21,10 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
+import com.codelabs.state.ui.composables.WellnessScreen
 import com.codelabs.state.ui.theme.BasicStateCodelabTheme
 
 class MainActivity : ComponentActivity() {
@@ -30,13 +33,28 @@ class MainActivity : ComponentActivity() {
         setContent {
             BasicStateCodelabTheme {
                 // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colors.background
-                ) {
-                    WellnessScreen()
-                }
+               WellnessApp()
             }
         }
+    }
+}
+
+
+@Composable
+fun WellnessApp(){
+    Surface(
+        modifier = Modifier.fillMaxSize(),
+        color = MaterialTheme.colors.background
+    ) {
+        WellnessScreen()
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun PreviewWellnessApp(){
+    BasicStateCodelabTheme {
+        // A surface container using the 'background' color from the theme
+        WellnessApp()
     }
 }
