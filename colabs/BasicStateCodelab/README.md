@@ -1,5 +1,5 @@
-# State in Jetpack Compose
 
+# State in Jetpack Compose
 An app's "state" is any value that can change over time. This is a very broad definition and encompasses everything from a Room database to a variable in a class.
 
 ### Key Terms and Notes:

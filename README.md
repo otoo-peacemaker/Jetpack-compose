@@ -5,7 +5,13 @@ Jetpack [Compose](https://developer.android.com/jetpack/compose) is Android’s 
 - Quickly bring your app to life with less code, powerful tools, and intuitive Kotlin APIs.
 - It requires less code to implement a UI compared to the Android View system, which makes your app easier to maintain.
 
-## Note Taking 👨‍⚖️COMPOSE UI
+
+## Key notes
+- It's a good practice to provide a default *Modifier* to all composable functions, as it increases reusability. It should appear as the first optional parameter in the parameter list, after all required parameters.
+- In a real app, string should be added as string resources in the strings.xml file and referenced using Compose's [stringResource API](https://developer.android.com/jetpack/compose/resources#strings).
+
+
+## Powerful 👨‍⚖️COMPOSE UI API's
 
 ###  Creating a performant lazy list
 - To display a scrollable column we use a LazyColumn. LazyColumn renders only the visible items on screen, allowing performance gains when rendering a big list.
