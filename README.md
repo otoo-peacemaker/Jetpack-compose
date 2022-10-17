@@ -8,6 +8,7 @@ Jetpack [Compose](https://developer.android.com/jetpack/compose) is Android’s 
 
 ## Key notes
 - It's a good practice to provide a default *Modifier* to all composable functions, as it increases reusability. It should appear as the first optional parameter in the parameter list, after all required parameters.
+- In a real app, string should be added as string resources in the strings.xml file and referenced using Compose's [stringResource API](https://developer.android.com/jetpack/compose/resources#strings).
 
 
 ## Powerful 👨‍⚖️COMPOSE UI API's
