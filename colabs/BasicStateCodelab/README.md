@@ -28,6 +28,10 @@ This code lab explains the core concepts related to using State in Jetpack Compo
 - Basic understanding of Compose [you can start with the Jetpack Compose tutorial](https://developer.android.com/jetpack/compose/tutorial).
 - Basic understanding of Architecture Component's ViewModel.
 
+
+## What we'll build
+You will implement a simple Wellness app:
+
 ## What you'll learn
 - How to think about state and events in a Jetpack Compose UI.
 - How Compose uses state to determine which elements to display on the screen.
@@ -37,10 +41,6 @@ This code lab explains the core concepts related to using State in Jetpack Compo
 - How memory and internal state work in a composable function: using the remember and rememberSaveable APIs.
 - How to work with lists and state: using the mutableStateListOf and toMutableStateList APIs.
 - How to use ViewModel with Compose.
-
-
-## What we'll build
-You will implement a simple Wellness app:
 
 
 ### State and Event
@@ -76,6 +76,8 @@ rememberSaveable also retains state across Activity and process recreation.
   - where this *value* represents any state that could be modified.
 - The pattern where the **state** goes down, and **events** go up is called `Unidirectional Data Flow (UDF)`, and **state hoisting** is how we implement this architecture in Compose. 
 You can learn more about this in the Compose [Architecture documentation](https://developer.android.com/jetpack/compose/architecture#udf-compose).
+-
+[To read more about state and state hoisting, check out the Compose State documentation.](https://developer.android.com/jetpack/compose/state#state-hoisting)
 
 #### Properties of hoisted state
 - **Single source of truth**: By moving state instead of duplicating it, we're ensuring there's only one source of truth. This helps avoid bugs.
@@ -94,20 +96,22 @@ You can learn more about this in the Compose [Architecture documentation](https:
 - If **two states change in response to the same events** they should be **hoisted to the same level**.
   You can hoist the state higher than these rules require, but if you don't hoist the state high enough, it might be difficult or impossible to follow unidirectional data flow.
 
-[To read more about state and state hoisting, check out the Compose State documentation.](https://developer.android.com/jetpack/compose/state#state-hoisting)
+
+### Using the mutableStateListOf and toMutableStateList APIs.
+- You shouldn't be using rememberSaveable to store large amounts of data or complex data structures that require lengthy serialization or deserialization, you need to provide a [custom saver](https://developer.android.com/jetpack/compose/state#restore-ui-state)..
+- Similar rules apply when working with Activity's [onSaveInstanceState](https://developer.android.com/reference/android/app/Activity#onSaveInstanceState(android.os.Bundle)); 
+- you can find more information in the [Save UI states documentation](https://developer.android.com/topic/libraries/architecture/saving-states#onsaveinstancestate). 
+- If you want to do this, you need an alternative storing mechanism. You can learn more about different [options for preserving UI state](https://developer.android.com/topic/libraries/architecture/saving-states#options) in the documentation.
 
 
-
-
-
-
-
-
-
-
-
-
-
+### How to use ViewModel with Compose.
+- [ViewModels](https://developer.android.com/topic/libraries/architecture/viewmodel) provide the UI state and access to the business logic located in other layers of the app. 
+- Additionally, ViewModels survive configuration changes, so they have a longer lifetime than the Composition. 
+- They can follow the lifecycle of the host of Compose content—that is, activities, fragments, or the destination of a Navigation graph if you're using [Compose Navigation](https://developer.android.com/jetpack/compose/navigation).
+- **Warning**: ViewModels are not part of the Composition. Therefore, you should not hold state created in composables (for example, a remembered value) because this could cause memory leaks
+- ViewModels are recommended to be used at screen-level composables, that is, close to a root composable called from an activity, fragment, or destination of a Navigation graph. 
+- ViewModels should never be passed down to other composables, instead you should pass only the data they need and functions that perform the required logic as parameters.
+- To use viewmodel in compose add the dependency: `implementation "androidx.lifecycle:lifecycle-viewmodel-compose:2.4.1"`
 
 
 
