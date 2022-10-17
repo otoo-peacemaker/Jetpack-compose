@@ -1,4 +1,14 @@
-# State in Jetpack Compose Code-lab
+# State in Jetpack Compose 
+
+An app's "state" is any value that can change over time. This is a very broad definition and encompasses everything from a Room database to a variable in a class.
+
+**Key idea**: State determines what is shown in the UI at any particular time.
+
+All Android apps display state to the user. A few examples of state in Android apps are:
+
+- The most recent messages received in a chat app.
+- The user's profile photo.
+- The scroll position in a list of items.
 
 This codelab explains the core concepts related to using State in Jetpack Compose. 
 - It shows you how the app's state determines what is displayed in the UI, 
