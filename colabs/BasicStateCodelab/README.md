@@ -3,10 +3,14 @@
 An app's "state" is any value that can change over time. This is a very broad definition and encompasses everything from a Room database to a variable in a class.
 
 ### Key Terms and Notes:
-- State determines what is shown in the UI at any particular time.
-- Any action that causes the modification of state is called an *"event"*
+- **State** determines what is shown in the UI at any particular time.
+- Any action that causes the modification of state is called an **"event"**
 - State is. Events happen.
-- Recompose: The process of updating the state on event click/trigger and redrawing/re-rendering the result(ie the new state) to the UI.
+- **The Composition**: A description of the UI built by Jetpack Compose when it executes composables.
+- **Initial composition**: creation of a Composition by running composables the first time.
+- **Recomposition**: Re-running composables to update the Composition when data changes. 
+The process of updating the state on an event click/trigger and redrawing/re-rendering the result(ie the new state) to the UI.
+
 
 All Android apps display state to the user. A few examples of state in Android apps are:
 
@@ -35,19 +39,15 @@ This code lab explains the core concepts related to using State in Jetpack Compo
 - How to use ViewModel with Compose.
 
 
-
-
 ## What we'll build
 You will implement a simple Wellness app:
 
-![](../../../../../PEACEM~1/AppData/Local/Temp/4888b02619969c55.png)
 
 ### State and Event
 - Events are inputs generated from outside or inside an application, such as:
     - The user interacting with the UI by, for example, pressing a button.
     - Other factors, such as sensors sending a new value, or network responses.
 - While the state of the app offers a description of what to display in the UI, events are the mechanism through which the state changes, resulting in changes to the UI.
-
 - Events notify a part of a program that something has happened. In all Android apps, there's a core UI update loop that goes like this:
 
 ![f415ca9336d83142](https://user-images.githubusercontent.com/43262139/196190165-6ddc351d-3574-4afd-8337-3da99a9ec8e8.png)
@@ -56,7 +56,63 @@ You will implement a simple Wellness app:
 - Update State - An event handler changes the state that is used by the UI.
 - Display State - The UI is updated to display the new state.
 
-This folder contains the android team source code for the [State in Jetpack Compose codelab](https://developer.android.com/codelabs/jetpack-compose-state).
+### How Compose uses state to determine which elements to display on the screen.
+- The UI presents the state to the user (the current count is displayed as text).
+- The user produces events that are combined with existing state to produce new state (clicking the button adds one to the current count)
+- If the UI is what the user sees, the UI state is what the app says they should see. Like two sides of the same coin, 
+the UI is the visual representation of the UI state. Any changes to the UI state are immediately reflected in the UI.
+- **remember** stores objects in the Composition, and forgets the object if the source location where remember is called is not invoked again during a recomposition.
+- Use rememberSaveable to restore your UI state after an Activity or process is recreated. Besides retaining state across recompositions, 
+rememberSaveable also retains state across Activity and process recreation.
+- Consider whether to use remember or rememberSaveable depending on your app's state and UX needs.
+
+### State hoisting
+- Composables with internal state tend to be less *reusable* and harder to *test*.
+- Composables that don't hold any state are called **stateless** composables. An easy way to create a stateless composable is by using **state hoisting**
+- **State hoisting** in Compose is a pattern of moving state to a composable's caller to make a composable stateless. 
+- The general pattern for state hoisting in Jetpack Compose is to replace the state variable with two parameters in the stateless composable function:
+  - **value: T** - the current value to display 
+  - **onValueChange: (T) -> Unit** - an event that requests the value to change, where T is the proposed new value
+  - where this *value* represents any state that could be modified.
+- The pattern where the **state** goes down, and **events** go up is called `Unidirectional Data Flow (UDF)`, and **state hoisting** is how we implement this architecture in Compose. 
+You can learn more about this in the Compose [Architecture documentation](https://developer.android.com/jetpack/compose/architecture#udf-compose).
+
+#### Properties of hoisted state
+- **Single source of truth**: By moving state instead of duplicating it, we're ensuring there's only one source of truth. This helps avoid bugs.
+- **Shareable**: Hoisted state can be shared with multiple composables. 
+- **Interceptable**: Callers to the stateless composables can decide to ignore or modify events before changing the state. 
+- **Decoupled(separated)**: The state for a stateless composable function can be stored anywhere. For example, in a ViewModel.
+
+- A **stateless** composable is a composable that doesn't own any state, meaning it doesn't hold or define or modify new state. 
+- A **stateful** composable is a composable that owns a piece of state that can change over time.
+  - In real apps, having a 100% stateless composable can be difficult to achieve depending on the composable's responsibilities. 
+  You should design your composables in a way that they will own as little state as possible and allow the state to be hoisted, when it makes sense, by exposing it in the composable's API.
+
+#### Rules for hoisting a state
+- State should be hoisted to at least the **lowest common parent** of all composables that use the state (read).
+- State should be hoisted to at least the **highest level** it may be changed (write).
+- If **two states change in response to the same events** they should be **hoisted to the same level**.
+  You can hoist the state higher than these rules require, but if you don't hoist the state high enough, it might be difficult or impossible to follow unidirectional data flow.
+
+[To read more about state and state hoisting, check out the Compose State documentation.](https://developer.android.com/jetpack/compose/state#state-hoisting)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ## License
 
@@ -74,3 +130,5 @@ distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
+
+This folder contains the android team source code for the [State in Jetpack Compose codelab](https://developer.android.com/codelabs/jetpack-compose-state).
