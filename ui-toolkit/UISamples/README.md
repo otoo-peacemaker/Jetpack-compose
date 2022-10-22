@@ -55,5 +55,6 @@ A bottom app bar displays navigation and key actions at the bottom of mobile scr
 - The bottom app bar is easy to reach from a handheld position on a mobile device
 
 
-[Link to documentation 👉 ](https://developer.android.com/reference/kotlin/androidx/compose/material3/package-summary)
+[Link to documentation](https://developer.android.com/reference/kotlin/androidx/compose/material3/package-summary)
+
 [compose-tutorials](https://www.jetpackcompose.net/)
